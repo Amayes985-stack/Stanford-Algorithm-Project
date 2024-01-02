@@ -1,0 +1,11 @@
+Analyse de Graphe. Build: 00:03:56, Jan  3 2024. Heure: 00:05:08 [Dec 30 2023]
+==============================================================================
+Nom du graphe en entrée (-i:)=Wikipedia1.txt
+Graph loaded from Wikipedia1.txt
+1. Type de graphe: Non orienté
+2. Nombre de sommets: 2277
+3. Nombre d'arêtes: 32361
+4. Degré maximal: 732
+5. Nombre de composantes connexes: 1
+6. Nombre de cycles avec 3 sommets: 356442
+7. Dégénérescence: 63

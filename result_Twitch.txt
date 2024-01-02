@@ -1,0 +1,11 @@
+Analyse de Graphe Orienté. Build: 00:03:53, Jan  3 2024. Heure: 00:04:01 [Dec 30 2023]
+=======================================================================================
+Nom du graphe en entrée (-i:)=twitchDE.txt
+Graph loaded from twitchDE.txt
+1. Type de graphe: Orienté
+2. Nombre de sommets: 9417
+3. Nombre d'arêtes: 153055
+4. Degré sortant maximum: 1256
+5. Nombre de composantes fortement connexes: 2723
+6. Nombre de cycles avec 3 sommets: 579546
+7. Dégénérescence : 8

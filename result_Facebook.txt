@@ -1,0 +1,11 @@
+Analyse de Graphe. Build: 00:03:56, Jan  3 2024. Heure: 00:05:09 [Dec 30 2023]
+==============================================================================
+Nom du graphe en entrée (-i:)=FacebookSites.txt
+Graph loaded from FacebookSites.txt
+1. Type de graphe: Non orienté
+2. Nombre de sommets: 22012
+3. Nombre d'arêtes: 170947
+4. Degré maximal: 708
+5. Nombre de composantes connexes: 11
+6. Nombre de cycles avec 3 sommets: 720374
+7. Dégénérescence: 52
