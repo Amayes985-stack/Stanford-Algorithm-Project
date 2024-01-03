@@ -32,6 +32,7 @@ This project is licensed under the MIT License. See the LICENSE.md file for deta
 We appreciate your contributions to advancing graph analysis. Thank you to all contributors!
 
 
+
 ```plaintext
 =======================================================================
 Graph Analysis with SNAP - README
@@ -47,6 +48,9 @@ This directory contains a graph analysis program using the SNAP (Stanford Networ
 - **csv_to_txt_twitch.py**: Python script to convert Twitch CSV file to Small World format.
 - **csv_to_txt_github.py**, **csv_to_txt_wikipedia.py**, **csv_to_txt_facebook.py**: Similar Python scripts for other datasets.
 - **README.txt**: This file.
+- **result_pung.txt**: Execution result of the ./graph_parameters_PUNG displayed in an array 
+- **result_png.txt**: Execution result of the ./graph_parameters_PNG displayed in an array 
+
 
 ## Graph Data Formats
 
@@ -59,6 +63,7 @@ Ensure that you have the SNAP library installed before compiling the programs. Y
 To generate graphs from CSV files, run the Python scripts `csv_to_txt_*.py` before executing the analysis programs.
 
 ```bash
+make generate_graphs
 make execute
 ```
 
@@ -67,12 +72,14 @@ make execute
 The analysis programs take edge-list graph files as input and display various graph properties. For example, to analyze the directed graphs use the command:
 
 ```bash
+	g++ -o graph_parameters_PNG graph_analysis_PNG.cpp -I/workspaces/Stanford-Algorithm-Project/snap-core -I/workspaces/Stanford-Algorithm-Project/glib-core -lsnap -lrt -fopenmp
 ./graph_parameters_PNG 
 ```
 
 To analyze the undirected graphs, use the command: 
 
 ```bash
+	g++ -o graph_parameters_PUNG graph_analysis_PUNG.cpp -I/workspaces/Stanford-Algorithm-Project/snap-core -I/workspaces/Stanford-Algorithm-Project/glib-core -lsnap -lrt -fopenmp
 ./graph_parameters_PUNG 
 ```
 Make sure to specify paths to snap-core and glib-core libraries at runtime and that -lsnap, -lrt and -fopenmp libraries are installed 
@@ -134,11 +141,13 @@ make execute
 Les programmes d'analyse prennent en entrée des fichiers de graphe au format liste d'arêtes et affichent diverses propriétés du graphe. Par exemple, pour analyser les graphes orientés, utilisez la commande :
 
 ```bash
+	g++ -o graph_parameters_PNG graph_analysis_PNG.cpp -I/workspaces/Stanford-Algorithm-Project/snap-core -I/workspaces/Stanford-Algorithm-Project/glib-core -lsnap -lrt -fopenmp
 ./graph_parameters_PNG 
 ```
 pour analyser les graphes non orientés, utiliser la commande : 
 
 ```bash
+	g++ -o graph_parameters_PUNG graph_analysis_PUNG.cpp -I/workspaces/Stanford-Algorithm-Project/snap-core -I/workspaces/Stanford-Algorithm-Project/glib-core -lsnap -lrt -fopenmp
 ./graph_parameters_PUNG 
 ```
 
