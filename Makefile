@@ -4,14 +4,11 @@
 
 execute: 
 
-	g++ -o graph_parameters_PNG graph_analysis_PNG.cpp -I/home/amayes/Bureau/Stanford-Algorithm-Project/snap-core -I/home/amayes/Bureau/Stanford-Algorithm-Project/glib-core -lsnap -lrt -fopenmp
-	g++ -o graph_parameters_PUNG graph_analysis_PUNG.cpp -I/home/amayes/Bureau/Stanford-Algorithm-Project/snap-core -I/home/amayes/Bureau/Stanford-Algorithm-Project/glib-core -lsnap -lrt -fopenmp
+	g++ -o graph_parameters_PNG graph_analysis_PNG.cpp -I/workspaces/Stanford-Algorithm-Project/snap-core -I/workspaces/Stanford-Algorithm-Project/glib-core -lsnap -lrt -fopenmp
+	g++ -o graph_parameters_PUNG graph_analysis_PUNG.cpp -I/workspaces/Stanford-Algorithm-Project/snap-core -I/workspaces/Stanford-Algorithm-Project/glib-core -lsnap -lrt -fopenmp
 
-	./graph_parameters_PNG -i:CA-GrQc.txt 
-	./graph_parameters_PNG -i:twitchDE.txt 
-	./graph_parameters_PUNG -i:GitHub.txt 
-	./graph_parameters_PUNG -i:Wikipedia1.txt 
-	./graph_parameters_PUNG -i:FacebookSites.txt
+	./graph_parameters_PNG > result_png.txt
+	./graph_parameters_PUNG > result_pung.txt 
 
 generate_graphs : 
 

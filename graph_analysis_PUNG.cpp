@@ -1,93 +1,133 @@
 #include "Snap.h"
 
-void AnalyzeGraph(const PUNGraph& Graph, const TStr& InFNm) {
+// Structure pour stocker les résultats d'analyse d'un graphe
+struct GraphResult {
+    TStr GraphName;
+    int NumNodes;
+    int NumEdges;
+    int MaxDegree;
+    int NumConnComp;
+    int NumCycles3;
+    int MaxDegeneracy;  // Ajout du champ pour stocker la dégénérescence
+};
+
+void AnalyzeGraph(const PUNGraph& Graph, const TStr& GraphName, GraphResult& Result) {
     TIntV NIdV;
     TCnComV CnComV;
 
     // 1. Type de graphe (orienté ou non orienté)
-
-    printf("1. Type de graphe: Non orienté\n");
+    //printf("1. Type de graphe: Non orienté\n");
 
     // 2. Nombre de sommets
     const int NumNodes = Graph->GetNodes();
-    printf("2. Nombre de sommets: %d\n", NumNodes);
+    //printf("2. Nombre de sommets: %d\n", NumNodes);
 
     // 3. Nombre d’arêtes
     const int NumEdges = Graph->GetEdges();
-    printf("3. Nombre d'arêtes: %d\n", NumEdges);
+    //printf("3. Nombre d'arêtes: %d\n", NumEdges);
 
-    // 4. Degré maximal (ou degré sortant maximum pour twitch et CA-GrQc)
+    // 4. Degré maximal
     int MaxDegree = 0;
 
     for (TUNGraph::TNodeI NI = Graph->BegNI(); NI < Graph->EndNI(); NI++) {
-        MaxDegree = TMath::Mx(MaxDegree, NI.GetOutDeg());
+        MaxDegree = TMath::Mx(MaxDegree, NI.GetDeg());
     }
 
-   
-    printf("4. Degré maximal: %d\n", MaxDegree);
+    //printf("4. Degré maximal: %d\n", MaxDegree);
 
     // 5. Nombre de composantes connexes
     TSnap::GetWccs(Graph, CnComV);
     const int NumConnComp = CnComV.Len();
-    printf("5. Nombre de composantes connexes: %d\n", NumConnComp);
+    //printf("5. Nombre de composantes connexes: %d\n", NumConnComp);
 
-    // 6. Nombre de cycles avec 3 sommets (utiliser GetTriads pour tous les graphes)
+    // 6. Nombre de cycles avec 3 sommets
     const int NumCycles3 = TSnap::GetTriads(Graph);
-    printf("6. Nombre de cycles avec 3 sommets: %d\n", NumCycles3);
+    //printf("6. Nombre de cycles avec 3 sommets: %d\n", NumCycles3);
 
-// 7. Dégénérescence
-int MaxDegeneracy = 0;
-TIntV DegSeq;
+    // 7. Dégénérescence
+    int MaxDegeneracy = 0;
+    TIntV DegSeq;
 
-while (!Graph->Empty()) {
-    int MinOutDegree = TInt::Mx;
-    int MinOutNId = -1;
+    while (!Graph->Empty()) {
+        int MinDeg = TInt::Mx;
+        int MinNId = -1;
 
-    // Trouver le nœud de degré minimum
-    for (TUNGraph::TNodeI NI = Graph->BegNI(); NI < Graph->EndNI(); NI++) {
-        if (NI.GetOutDeg() < MinOutDegree) {
-            MinOutDegree = NI.GetOutDeg();
-            MinOutNId = NI.GetId();
+        // Trouver le nœud de degré minimum
+        for (TUNGraph::TNodeI NI = Graph->BegNI(); NI < Graph->EndNI(); NI++) {
+            if (NI.GetDeg() < MinDeg) {
+                MinDeg = NI.GetDeg();
+                MinNId = NI.GetId();
+            }
+        }
+
+        if (MinNId != -1) {
+            // Sauvegarder le degré du nœud supprimé à chaque itération
+            DegSeq.Add(MinDeg);
+
+            // Mettre à jour la dégénérescence à chaque itération
+            MaxDegeneracy = TMath::Mx(MaxDegeneracy, MinDeg);
+
+            // Supprimer le nœud de degré minimum
+            Graph->DelNode(MinNId);
         }
     }
 
-    if (MinOutNId != -1) {
-        // Sauvegarder le degré du nœud supprimé à chaque itération
-        DegSeq.Add(MinOutDegree);
+    // Afficher la dégénérescence maximale à la fin
+    //printf("7. Dégénérescence: %d\n", MaxDegeneracy);
 
-        // Mettre à jour la dégénérescence à chaque itération
-        MaxDegeneracy = TMath::Mx(MaxDegeneracy, MinOutDegree);
+    // Assignez les résultats à la structure GraphResult
+    Result.GraphName = GraphName;
+    Result.NumNodes = NumNodes;
+    Result.NumEdges = NumEdges;
+    Result.MaxDegree = MaxDegree;
+    Result.NumConnComp = NumConnComp;
+    Result.NumCycles3 = NumCycles3;
+    Result.MaxDegeneracy = MaxDegeneracy;  // Ajoutez cette ligne pour stocker la dégénérescence
 
-        // Supprimer le nœud de degré minimum
-        Graph->DelNode(MinOutNId);
-
-    }
-}
-
-// Afficher la dégénérescence maximale à la fin
-printf("7. Dégénérescence: %d\n", MaxDegeneracy);
+    // Ajout du résultat supplémentaire (vous pouvez définir cette valeur en fonction de votre logique)
 }
 
 int main(int argc, char* argv[]) {
     Env = TEnv(argc, argv, TNotify::StdNotify);
-    Env.PrepArgs(TStr::Fmt("Analyse de Graphe. Build: %s, %s. Heure: %s", __TIME__, __DATE__, TExeTm::GetCurTm()));
+    Env.PrepArgs(TStr::Fmt("Analyse de Graphe Non Orienté. Build: %s, %s. Heure: %s", __TIME__, __DATE__, TExeTm::GetCurTm()));
 
-    const TStr InFNm = Env.GetIfArgPrefixStr("-i:", "", "Nom du graphe en entrée");
-    if (InFNm.Empty()) {
-        printf("Error: Input graph file not specified. Use -i:filename.graph\n");
-        return 1;
+    // Spécifiez ici les noms des fichiers de graphes que vous souhaitez analyser
+    TStrV GraphFiles;
+    GraphFiles.Add("FacebookSites.txt");
+    GraphFiles.Add("GitHub.txt");
+    GraphFiles.Add("Wikipedia1.txt");
+    // ... ajoutez autant de fichiers que nécessaire
+
+    // Créez un vecteur pour stocker les résultats de chaque graphe
+    TVec<GraphResult> Results;
+
+    // Analysez chaque graphe et stockez les résultats dans le vecteur
+    for (int i = 0; i < GraphFiles.Len(); i++) {
+        const TStr& InFNm = GraphFiles[i];
+        PUNGraph Graph = TSnap::LoadEdgeList<PUNGraph>(InFNm);
+        GraphResult Result;
+
+        // Analysez le graphe
+        AnalyzeGraph(Graph, InFNm.GetFMid(), Result);
+
+        // Stockez les résultats dans le vecteur
+        Results.Add(Result);
     }
 
-    Try
-    PUNGraph Graph = TSnap::LoadEdgeList<PUNGraph>(InFNm);
-    printf("Graph loaded from %s\n", InFNm.CStr());
+    // Imprimez les résultats sous forme de tableau
+    printf("| Nom du Graphe | Nombre de Sommets | Nombre d'Arêtes | Degré Maximal | Nombre de Composantes Connexes | Nombre de Cycles avec 3 Sommets | Dégénérescence | Résultat |\n");
+    printf("|---------------|---------------------|-----------------|---------------|------------------------|-------------------------------|-----------------|---------|\n");
 
-    AnalyzeGraph(Graph, InFNm);
-
-    Catch
+    for (int i = 0; i < Results.Len(); i++) {
+        const GraphResult& Result = Results[i];
+        printf("| %-13s| %-20d| %-15d| %-13d| %-23d| %-31d| %-15d|\n",
+               Result.GraphName.CStr(), Result.NumNodes, Result.NumEdges, Result.MaxDegree,
+               Result.NumConnComp, Result.NumCycles3, Result.MaxDegeneracy);
+    }
 
     return 0;
 }
+
 
 // Complexité algorithmique :
 // - La lecture du fichier d'entrée est linéaire par rapport au nombre d'arêtes et de sommets du graphe.
