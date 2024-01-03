@@ -1,0 +1,7 @@
+Analyse de Graphe Orienté. Build: 11:56:18, Jan  3 2024. Heure: 11:56:21 [Dec 30 2023]
+=======================================================================================
+usage: graph_parameters_PNG
+| Nom du Graphe | Nombre de Sommets | Nombre d'Arêtes | Degré Sortant Maximal | Nombre de Composantes Fortement Connexes | Nombre de Cycles avec 3 Sommets | Dégénérescence |
+|---------------|---------------------|-----------------|----------------|-------------------------------|---------------------------------|-----------------|
+| CA-GrQc      | 5242                | 28980          | 81            | 355                          | 48260                          | 43             |
+| twitchDE     | 9417                | 153055         | 1256          | 2723                         | 579546                         | 8              |
