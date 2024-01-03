@@ -49,7 +49,9 @@ This directory contains a graph analysis program using the SNAP (Stanford Networ
 - **csv_to_txt_github.py**, **csv_to_txt_wikipedia.py**, **csv_to_txt_facebook.py**: Similar Python scripts for other datasets.
 - **README.txt**: This file.
 - **result_pung.txt**: Execution result of the ./graph_parameters_PUNG displayed in an array 
-- **result_png.txt**: Execution result of the ./graph_parameters_PNG displayed in an array 
+- **result_png.txt**: Execution result of the ./graph_parameters_PNG displayed in an array
+- **graph_name_degree_distribution.png** : Graph Display -> Degree and Frequency Distribution 
+- **graphe_name_degree_distribution.dat** : Degree and Frequency Distribution 
 
 
 ## Graph Data Formats
@@ -65,6 +67,7 @@ To generate graphs from CSV files, run the Python scripts `csv_to_txt_*.py` befo
 ```bash
 make generate_graphs
 make execute
+make display_graph 
 ```
 
 ## Usage
@@ -72,16 +75,31 @@ make execute
 The analysis programs take edge-list graph files as input and display various graph properties. For example, to analyze the directed graphs use the command:
 
 ```bash
-	g++ -o graph_parameters_PNG graph_analysis_PNG.cpp -I/workspaces/Stanford-Algorithm-Project/snap-core -I/workspaces/Stanford-Algorithm-Project/glib-core -lsnap -lrt -fopenmp
+g++ -o graph_parameters_PNG graph_analysis_PNG.cpp -I/workspaces/Stanford-Algorithm-Project/snap-core -I/workspaces/Stanford-Algorithm-Project/glib-core -lsnap -lrt -fopenmp
 ./graph_parameters_PNG 
 ```
 
 To analyze the undirected graphs, use the command: 
 
 ```bash
-	g++ -o graph_parameters_PUNG graph_analysis_PUNG.cpp -I/workspaces/Stanford-Algorithm-Project/snap-core -I/workspaces/Stanford-Algorithm-Project/glib-core -lsnap -lrt -fopenmp
+g++ -o graph_parameters_PUNG graph_analysis_PUNG.cpp -I/workspaces/Stanford-Algorithm-Project/snap-core -I/workspaces/Stanford-Algorithm-Project/glib-core -lsnap -lrt -fopenmp
 ./graph_parameters_PUNG 
 ```
+
+To display the distribution of directed graphs, use the command : 
+
+```bash
+g++ -o degree_distribution_PNG degree_distribution_PNG.cpp -I/workspaces/Stanford-Algorithm-Project/snap-core -I/workspaces/Stanford-Algorithm-Project/glib-core -lsnap -lrt -fopenmp
+./degree_distribution_PNG
+```
+
+To display the distribution of undirected graphs, use the command : 
+
+```bash
+g++ -o degree_distribution_PUNG degree_distribution_PUNG.cpp -I/workspaces/Stanford-Algorithm-Project/snap-core -I/workspaces/Stanford-Algorithm-Project/glib-core -lsnap -lrt -fopenmp
+./degree_distribution_PUNG
+```
+
 Make sure to specify paths to snap-core and glib-core libraries at runtime and that -lsnap, -lrt and -fopenmp libraries are installed 
 
 ## Algorithmic Complexity
@@ -120,6 +138,11 @@ Ce répertoire contient un programme d'analyse de graphe utilisant la bibliothè
 - **csv_to_txt_twitch.py**: Script Python pour convertir le fichier CSV Twitch en format Small World.
 - **csv_to_txt_github.py**, **csv_to_txt_wikipedia.py**, **csv_to_txt_facebook.py**: Scripts Python similaires pour d'autres ensembles de données.
 - **README.txt**: Ce fichier.
+- **result_pung.txt** : Résultat d’exécution du . /graph_parameters_PUNG affiché dans un tableau 
+- **result_png.txt** : Résultat d’exécution du . /graph_parameters_PNG affiché dans un tableau
+- **graph_name_degree_distribution.png** : Affichage graphique -> Distribution de degrés et de fréquences 
+- **graphe_name_degree_distribution.dat** : Distribution des degrés et des fréquences 
+
 
 ## Formats de Données de Graphe
 
@@ -141,14 +164,26 @@ make execute
 Les programmes d'analyse prennent en entrée des fichiers de graphe au format liste d'arêtes et affichent diverses propriétés du graphe. Par exemple, pour analyser les graphes orientés, utilisez la commande :
 
 ```bash
-	g++ -o graph_parameters_PNG graph_analysis_PNG.cpp -I/workspaces/Stanford-Algorithm-Project/snap-core -I/workspaces/Stanford-Algorithm-Project/glib-core -lsnap -lrt -fopenmp
+g++ -o graph_parameters_PNG graph_analysis_PNG.cpp -I/workspaces/Stanford-Algorithm-Project/snap-core -I/workspaces/Stanford-Algorithm-Project/glib-core -lsnap -lrt -fopenmp
 ./graph_parameters_PNG 
 ```
-pour analyser les graphes non orientés, utiliser la commande : 
+Pour analyser les graphes non orientés, utiliser la commande : 
 
 ```bash
-	g++ -o graph_parameters_PUNG graph_analysis_PUNG.cpp -I/workspaces/Stanford-Algorithm-Project/snap-core -I/workspaces/Stanford-Algorithm-Project/glib-core -lsnap -lrt -fopenmp
+g++ -o graph_parameters_PUNG graph_analysis_PUNG.cpp -I/workspaces/Stanford-Algorithm-Project/snap-core -I/workspaces/Stanford-Algorithm-Project/glib-core -lsnap -lrt -fopenmp
 ./graph_parameters_PUNG 
+```
+Pour afficher la distribution de degrés et de fréquence des graphes orientés, utiliser la commande : 
+
+```bash
+g++ -o degree_distribution_PNG degree_distribution_PNG.cpp -I/workspaces/Stanford-Algorithm-Project/snap-core -I/workspaces/Stanford-Algorithm-Project/glib-core -lsnap -lrt -fopenmp
+./degree_distribution_PNG
+```
+Pour afficher la distribution de degrés et de fréquence des graphes non orientés, utiliser la commande : 
+
+```bash
+g++ -o degree_distribution_PNG degree_distribution_PNG.cpp -I/workspaces/Stanford-Algorithm-Project/snap-core -I/workspaces/Stanford-Algorithm-Project/glib-core -lsnap -lrt -fopenmp
+./degree_distribution_PNG
 ```
 
 Assurez-vous de spécifier les chemins vers les bibliothèques snap-core et glib-core lors de l'exécution et que les libraires -lsnap, -lrt et -fopenmp sont bien installés 
@@ -169,6 +204,12 @@ Pour supprimer les fichiers générés, utilisez la commande :
 ```bash
 make clean
 ```
+
+
+Bonne exploration de graphes !
+```
+
+Assurez-vous d'ajuster les détails en fonction de votre projet, tels que les noms de fichiers, les commandes de compilation, etc.
 
 
 Bonne exploration de graphes !
