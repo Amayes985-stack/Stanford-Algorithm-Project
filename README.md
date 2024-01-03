@@ -31,11 +31,18 @@ make execute
 
 ## Usage
 
-The analysis programs take edge-list graph files as input and display various graph properties. For example, to analyze the directed graph CA-GrQc.txt, use the command:
+The analysis programs take edge-list graph files as input and display various graph properties. For example, to analyze the directed graphs use the command:
 
 ```bash
-./graph_parameters_PNG -i:CA-GrQc.txt
+./graph_parameters_PNG 
 ```
+
+To analyze the undirected graphs, use the command: 
+
+```bash
+./graph_parameters_PUNG 
+```
+Make sure to specify paths to snap-core and glib-core libraries at runtime and that -lsnap, -lrt and -fopenmp libraries are installed 
 
 ## Algorithmic Complexity
 
@@ -54,7 +61,6 @@ To clean generated files, use the command:
 make clean
 ```
 
-If you encounter issues or have questions, feel free to contact the code author.
 
 Happy graph exploration!
 ```
@@ -92,13 +98,18 @@ make execute
 
 ## Utilisation
 
-Les programmes d'analyse prennent en entrée des fichiers de graphe au format liste d'arêtes et affichent diverses propriétés du graphe. Par exemple, pour analyser le graphe orienté CA-GrQc.txt, utilisez la commande :
+Les programmes d'analyse prennent en entrée des fichiers de graphe au format liste d'arêtes et affichent diverses propriétés du graphe. Par exemple, pour analyser les graphes orientés, utilisez la commande :
 
 ```bash
-./graph_parameters_PNG -i:CA-GrQc.txt
+./graph_parameters_PNG 
+```
+pour analyser les graphes non orientés, utiliser la commande : 
+
+```bash
+./graph_parameters_PUNG 
 ```
 
-Assurez-vous de spécifier les chemins vers les bibliothèques snap-core et glib-core lors de l'exécution.
+Assurez-vous de spécifier les chemins vers les bibliothèques snap-core et glib-core lors de l'exécution et que les libraires -lsnap, -lrt et -fopenmp sont bien installés 
 
 ## Complexité Algorithmique
 
