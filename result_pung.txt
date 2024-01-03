@@ -1,0 +1,8 @@
+Analyse de Graphe Non Orienté. Build: 11:56:19, Jan  3 2024. Heure: 11:56:24 [Dec 30 2023]
+===========================================================================================
+usage: graph_parameters_PUNG
+| Nom du Graphe | Nombre de Sommets | Nombre d'Arêtes | Degré Maximal | Nombre de Composantes Connexes | Nombre de Cycles avec 3 Sommets | Dégénérescence | Résultat |
+|---------------|---------------------|-----------------|---------------|------------------------|-------------------------------|-----------------|---------|
+| FacebookSites| 22012               | 170947         | 708          | 11                     | 720374                         | 52             |
+| GitHub       | 37002               | 288745         | 7472         | 5                      | 476817                         | 34             |
+| Wikipedia1   | 2277                | 32361          | 732          | 1                      | 356442                         | 63             |

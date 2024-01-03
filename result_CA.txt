@@ -1,0 +1,11 @@
+Analyse de Graphe Orienté. Build: 00:03:53, Jan  3 2024. Heure: 00:03:59 [Dec 30 2023]
+=======================================================================================
+Nom du graphe en entrée (-i:)=CA-GrQc.txt
+Graph loaded from CA-GrQc.txt
+1. Type de graphe: Orienté
+2. Nombre de sommets: 5242
+3. Nombre d'arêtes: 28980
+4. Degré sortant maximum: 81
+5. Nombre de composantes fortement connexes: 355
+6. Nombre de cycles avec 3 sommets: 48260
+7. Dégénérescence : 43
