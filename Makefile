@@ -21,6 +21,14 @@ clean :
 
 	rm -r graph_parameters_PNG
 	rm -r graph_parameters_PUNG
+
+display_graph : 
+
+	g++ -o degree_distribution_PNG degree_distribution_PNG.cpp -I/workspaces/Stanford-Algorithm-Project/snap-core -I/workspaces/Stanford-Algorithm-Project/glib-core -lsnap -lrt -fopenmp
+	g++ -o degree_distribution_PUNG degree_distribution_PUNG.cpp -I/workspaces/Stanford-Algorithm-Project/snap-core -I/workspaces/Stanford-Algorithm-Project/glib-core -lsnap -lrt -fopenmp
+	./degree_distribution_PNG
+	./degree_distribution_PUNG
+
 	
 	
 
