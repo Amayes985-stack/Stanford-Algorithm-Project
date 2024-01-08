@@ -1,0 +1,38 @@
+Project Team Members:
+
+- Amayes Djermoune
+- Nylls Gersan Boutoto
+
+Task Allocation:
+- Amayes Djermoune:
+  - Design of the Makefile
+  - Report writing
+  - GitHub repository management
+  - Graph parameter calculations
+
+- Nylls Gersan Boutoto:
+  - Distribution of graph degrees and frequencies
+  - Code quality control
+  - Testing
+  - Project management 
+  
+---
+
+Membres participants au projet :
+
+- Amayes Djermoune
+- Nylls Gersan Boutoto
+
+Répartition des tâches :
+- Amayes Djermoune :
+  - Conception du fichier Makefile
+  - Rédaction du rapport
+  - Gestion du répertoire GitHub
+  - Calcul des paramètres du graphe
+
+- Nylls Gersan Boutoto :
+  - Distribution des degrés et fréquences du graphe
+  - Contrôle de qualité du code
+  - Tests
+  - Gestion et contrôle du projet
+
