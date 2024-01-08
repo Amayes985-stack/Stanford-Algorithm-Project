@@ -51,7 +51,8 @@ This directory contains a graph analysis program using the SNAP (Stanford Networ
 - **result_pung.txt**: Execution result of the ./graph_parameters_PUNG displayed in an array 
 - **result_png.txt**: Execution result of the ./graph_parameters_PNG displayed in an array
 - **graph_name_degree_distribution.png** : Graph Display -> Degree and Frequency Distribution 
-- **graphe_name_degree_distribution.dat** : Degree and Frequency Distribution 
+- **graphe_name_degree_distribution.dat** : Degree and Frequency Distribution
+- **participants.txt** : Participants who contributed to this project 
 
 
 ## Graph Data Formats
@@ -141,7 +142,8 @@ Ce répertoire contient un programme d'analyse de graphe utilisant la bibliothè
 - **result_pung.txt** : Résultat d’exécution du . /graph_parameters_PUNG affiché dans un tableau 
 - **result_png.txt** : Résultat d’exécution du . /graph_parameters_PNG affiché dans un tableau
 - **graph_name_degree_distribution.png** : Affichage graphique -> Distribution de degrés et de fréquences 
-- **graphe_name_degree_distribution.dat** : Distribution des degrés et des fréquences 
+- **graphe_name_degree_distribution.dat** : Distribution des degrés et des fréquences
+- **participants.txt** : Participants ayant contribué à ce projet
 
 
 ## Formats de Données de Graphe
